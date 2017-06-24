@@ -19,12 +19,57 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
+
+
+
+
 				<!-- Header -->
 					<header id="header">
 						<span class="avatar"><img src="https://avatars0.githubusercontent.com/u/9204365?v=3&s=460" alt="" /></span>
 						<h1> <strong>Mehmet Can</strong>  <a href="http://templated.co"></a><br />is<br />
-						<strong>Running</strong> Now.</h1><img src="http://www.musawa.ps/assets/images/location_icon.png" alt=""><p style="color:white">Denizli, Turkey</p>
+
+							<section class="nobrainer">
+
+
+						<strong style="display:none;" id="sho">Running</strong>
+
+
+								<div id="mydiv">
+						 	 <span class="editableDiv"  style=" :focus {outline: 0px solid transparent; } " contenteditable="true"><strong>Running</strong></span>
+<button  style="	color:white; width:15px;  "><</button>
+
+
+						</div><button  style="margin-bottom:1%;	color:white; width:5%; display:none;  ">+</button></section> Now.</h1><img src="http://www.musawa.ps/assets/images/location_icon.png" alt=""><p style="color:white">Denizli, Turkey</p>
 						<ul class="icons">
+							<script type="text/javascript">
+							document.onclick=check;
+							function check(e){
+							var target = (e && e.target) || (event && event.srcElement);
+								var obj = document.getElementById('mydiv');
+							var obj2 = document.getElementById('sho');
+
+						checkParent(target)?obj.style.display='none':null;
+						checkParent(target)?obj2.style.display='Grid':null;
+
+
+
+						target==obj2?obj.style.display='block':null;
+						target==obj2?obj2.style.display='none':null;
+							}
+							function checkParent(t){
+							while(t.parentNode){
+							if(t==document.getElementById('mydiv')){
+							return false
+							}
+							t=t.parentNode
+							}
+							return true
+							}
+							</script>
+
+
+
+
 							<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
 							<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
