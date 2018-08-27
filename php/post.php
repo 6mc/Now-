@@ -17,42 +17,30 @@
 <pre>
 
 
-<?php  
-session_start();
+<?php  session_start();
 //echo "<a href='yeni.php'></a>";
 //echo "Hoş geldin";
 require(__DIR__.'/ayar.php');
 $hello="boşgittin";
 
 echo $hello;
-z(6,"users");
+z(6,"aktivite");
 echo strlen($hello);
  //$_Firma =z(1, ['ad'=>'ayb'], 'ad,telno');
 //$_Firma=z(1,"WHERE 1",'ad');
  //print_r($_Firma);
-$poet=$_GET["uid"];
+$act=$_GET["activity"];
 
-$poem=$_GET["upass"];
  // z(2,'email',$poet);
  //  z(2,'name',$name);
  //   z(2,'password',$poem);
-$result =z(1,array('email'=>$poet,'password'=>$poem));
+$dt = new DateTime();
+$dt= $dt->format('d-m-Y H:i:s');
+$kid =$_SESSION["id"];
 
-echo $result;
-  if ($result==NULL) {
-  	header("Location: now.php?result=failed".$result);
-  	# code...
-  }
-else
-{
-	header("Location: now.php?result=signed".$result);
-$_SESSION["uname"] = $poet;
-$_SESSION["upass"] = $poem;
 
-$_SESSION["name"] = z(1,"WHERE email='".$poet."'",'name')[0];
-$_SESSION["id"] = z(1,"WHERE email='".$poet."'",'id')[0];
-}
-   
+  z(2,Array('Owner_id'=>$kid,'ac_name'=>$act,'datetime' =>$dt,'pic'=>'wow.jpg'));
+   header("Location: now.php?result=post");
 die();
 
  //echo $_Firma[1];

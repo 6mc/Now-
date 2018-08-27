@@ -46,7 +46,7 @@ else
 
 
 <div id="alert" style="text-align: center;  border-width: 2px; border-color: 	white; border-style: 	solid;		 border-radius: 9px; margin-top: 5%; border: 2%; background-color: #84bd00; color:pink; opacity:.9; 	 position: fixed; width: 30%; z-index: 2;  margin-left: 25%; display: none; ">
-	<h2>Your Now Account's been created successfully!</h2>
+	<h2>Your Now  been created successfully!</h2>
 
 </div>
 
@@ -74,6 +74,22 @@ else
   </form>
 
 </div>
+
+<div style="text-align: center;  border-width: 2px; border-color: 	white; border-style: 	solid;		 border-radius: 9px; margin-top: 12%; border: 2%; background-color: #3b3b3b; color:pink; opacity:.9; 	 position: fixed; width: 30%; z-index: 2;  margin-left: 25%; display: none; " class="file-upload" id="wpost">
+	<form id="wposta"  method = "get" action = "post.php">
+
+   
+    <input style="margin-top: 4%; " class="file-upload__input" id="upload" type="file" name="pic" accept="image/*">
+   <input style="border-radius: 0px; color: white ;text-align: center;" type = "text" id = "act" name = "activity" placeholder = "Current Activity">
+   <input style=" margin-top: 7%; border-radius: 4px; margin-left: auto; margin-right: auto;" type = "submit" id = "dologin" value = "Post">
+  
+
+  </form>
+
+</div>
+
+
+
 <script type="text/javascript">
 	function register() {
 
@@ -118,17 +134,55 @@ else
 				<!-- Header -->
 					<header id="header">
 						<span class="avatar"><img src="https://avatars0.githubusercontent.com/u/9204365?v=3&s=460" alt="" /></span>
-						<h1> <strong>Mehmet Can</strong>  <a href="http://templated.co"></a><br />is<br />
+						<h1> <strong>
+							<?php session_start();
+//require(__DIR__.'/ayar.php');
+//z(6,"firma");
+
+echo $_SESSION['name'];
+
+
+							 ?></strong>  <a href="http://templated.co"></a><br />is<br />
 
 							<section class="nobrainer">
 
 
-						<strong style="display:none;" id="sho">Running</strong>
+						<strong style="display:none;" id="sho">
+
+
+
+
+						</strong>
 
 
 								<div id="mydiv">
-						 	 <span class="editableDiv"  style=" :focus {outline: 0px solid transparent; } " contenteditable="true"><strong>Running</strong></span>
-<button  style="	color:white; width:15px;  "><</button>
+						 	 <span class="editableDiv"  style=" :focus {outline: 0px solid transparent; } " contenteditable="true"><strong><?php 
+require(__DIR__.'/ayar.php');
+
+z(6,"aktivite");
+
+echo z(1,"WHERE Owner_id='".$_SESSION["id"]."'ORDER BY id DESC",'ac_name')[0];
+
+ ?>
+</strong></span>
+<button onclick="post()" style="	color:white; width:15px;  "><</button>
+
+<script type="text/javascript">
+	
+function post() {
+
+
+var u = document.getElementById("wpost");
+
+ // document.getElementById("dologin").value="LOG IN";
+ // document.getElementById("forum").action="check.php";
+
+  u.style.display = "block";
+
+}
+
+
+</script>
 
 
 						</div><button  style="margin-bottom:1%;	color:white; width:5%; display:none;  ">+</button></section> Now.</h1><img src="http://www.musawa.ps/assets/images/location_icon.png" alt=""><p style="color:white">Denizli, Turkey</p>
@@ -175,7 +229,102 @@ else
 
 						<!-- Thumbnails -->
 							<section class="thumbnails">
-								<div>
+
+
+<?php
+//require(__DIR__.'/ayar.php');
+z(6,"aktivite");
+
+$Olds= z(1,"WHERE Owner_id='".$_SESSION["id"]."'ORDER BY id DESC",'ac_name');
+
+$Times= z(1,"WHERE Owner_id='".$_SESSION["id"]."'ORDER BY id DESC",'datetime');
+
+
+echo '<div>';
+
+
+for ($i=0; $i <count($Olds) ; $i++) { 
+	# code...
+if ($i%3==0) {echo '<a href="images/fulls/trip.gif">';
+echo '<img src="#" alt="" />';
+echo '<h3>'; echo $Olds[$i];
+	# code...
+
+
+
+echo '</h3>';
+echo '';
+echo '<div class="memoli">';
+echo '';
+echo '</div>';
+echo '';
+echo $Times[$i];
+echo '';
+echo '</a>';
+echo '';
+echo '';
+}}
+echo '</div>';
+
+
+
+echo '<div>';
+
+
+for ($i=0; $i <count($Olds) ; $i++) { 
+	# code...
+if ($i%3==1) {echo '<a href="images/fulls/trip.gif">';
+echo '<img src="#" alt="" />';
+echo '<h3>'; echo $Olds[$i];
+	# code...
+
+echo '</h3>';
+echo '';
+echo '<div class="memoli">';
+echo '';
+echo '</div>';
+echo '';
+echo $Times[$i];
+echo '';
+echo '</a>';}
+
+}
+echo '';
+echo '';
+echo '</div>';
+
+
+echo '<div>';
+
+
+for ($i=0; $i <count($Olds) ; $i++) { 
+	# code...
+if ($i%3==2) {echo '<a href="images/fulls/trip.gif">';
+echo '<img src="#" alt="" />';
+echo '<h3>'; echo $Olds[$i];
+	# code...
+
+echo '</h3>';
+echo '';
+echo '<div class="memoli">';
+echo '';
+echo '</div>';
+echo '';
+echo $Times[$i];
+echo '';
+echo '</a>';
+}
+
+}
+echo '';
+echo '';
+echo '</div>';
+
+  ?>
+
+
+
+								<!-- <div>
 									<a
 										<h3>Swimming</h3><br/>
 <div class="memoli">
@@ -196,6 +345,7 @@ else
 
 									</a>
 								</div>
+
 								<div>
 									<a href="images/fulls/trip.gif">
 										<img src="images/thumbs/trip.gif" alt="" />
@@ -211,6 +361,7 @@ else
 
 
 								</div>
+
 								<div>
 									<a href="images/fulls/book.jpg">
 										<img src="images/thumbs/book.jpg" alt="" />
@@ -224,7 +375,8 @@ else
 
 									</a>
 
-								</div>
+								</div> -->
+
 							</section>
 
 					</section>
@@ -268,7 +420,7 @@ $(document).ready(function () { var z = document.getElementById("alert");
 </html>
 <?php  
 
-require(__DIR__.'/ayar.php');
+//require(__DIR__.'/ayar.php');
 //echo "Hoş geldin";
 
 $hello="hoşgeldin";
@@ -292,5 +444,5 @@ echo isset($_SESSION['uname']);
 
 
 
-
+die();
 ?>

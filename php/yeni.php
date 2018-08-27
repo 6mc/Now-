@@ -18,7 +18,6 @@
 
 
 <?php  
-session_start();
 //echo "<a href='yeni.php'></a>";
 //echo "Hoş geldin";
 require(__DIR__.'/ayar.php');
@@ -31,28 +30,15 @@ echo strlen($hello);
 //$_Firma=z(1,"WHERE 1",'ad');
  //print_r($_Firma);
 $poet=$_GET["uid"];
-
+$name=$_GET["name"];
 $poem=$_GET["upass"];
  // z(2,'email',$poet);
  //  z(2,'name',$name);
  //   z(2,'password',$poem);
-$result =z(1,array('email'=>$poet,'password'=>$poem));
 
-echo $result;
-  if ($result==NULL) {
-  	header("Location: now.php?result=failed".$result);
-  	# code...
-  }
-else
-{
-	header("Location: now.php?result=signed".$result);
-$_SESSION["uname"] = $poet;
-$_SESSION["upass"] = $poem;
 
-$_SESSION["name"] = z(1,"WHERE email='".$poet."'",'name')[0];
-$_SESSION["id"] = z(1,"WHERE email='".$poet."'",'id')[0];
-}
-   
+   z(2,Array('email'=>$poet,'name'=>$name,'password' => $poem));
+   header("Location: now.php?result=success");
 die();
 
  //echo $_Firma[1];
