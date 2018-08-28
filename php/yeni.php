@@ -38,7 +38,7 @@ $poem=$_GET["upass"];
 
 
    z(2,Array('email'=>$poet,'name'=>$name,'password' => $poem));
-   header("Location: now.php?result=success");
+   header("Location: index.php?result=success");
 die();
 
  //echo $_Firma[1];

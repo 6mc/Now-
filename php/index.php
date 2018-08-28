@@ -1,45 +1,132 @@
-<?php ob_start(); session_start(); ini_set('display_errors',1);
 
-	// VT bağlantısı dahil tüm ayarları import et
-	require(__DIR__.'/ayar.php');
+<!DOCTYPE HTML>
+<!--
+	Visualize by TEMPLATED
+	Released for free under the Creative Commons Attribution 3.0 license (license.txt)
+-->
+<html id="html">
+	<head><link href="https://fonts.googleapis.com/css?family=David+Libre" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="login_style.css">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="login_effect.js"></script>
+		<link rel="icon"
+		      type="image/ico"
+		      href="favicon.ico">
 
-	// Aksi durum yok ise head'i import et
-	if(!isset($_Sayfa[$SA]['head'])||$_Sayfa[$SA]['head']){
-		require(__DIR__.'/parca/head.php');
-	}
+		<title>Now</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body >
 
-	// Aksi durum yok ise header'i import et
-	if(!isset($_Sayfa[$SA]['header'])||$_Sayfa[$SA]['header']){
-		require(__DIR__.'/parca/header.php');
-	}
+<div  id="coby" style="margin-left:10%; margin-top: 2%; ">
+	<img  src="adas.png">
 
-	// GET'teki değerlere göre alt sayfayı import et
-	if(!empty($S)&&!empty($A)){
-		if(file_exists(__DIR__.'/sayfa/'.$S.'/'.$A.'.php'))
-			require(__DIR__.'/sayfa/'.$S.'/'.$A.'.php');
-		else
-			require(__DIR__.'/sayfa/404.php');
-	}
-	// GET'teki değerlere göre sayfayı import et
-	else if(!empty($S)){
-		if(file_exists(__DIR__.'/sayfa/'.$S.'.php'))
-			require(__DIR__.'/sayfa/'.$S.'.php');
-		else
-			require(__DIR__.'/sayfa/404.php');
-		
-	}
-	// GET'te yok ise ana sayfayı import et
-	else {
-		require(__DIR__.'/sayfa/'.$ayar['anaSayfa'].'.php');
-	}
+
+
+</div>
+
+<!-- Buttons -->
+
+<div style="text-align: center;  ">
 	
-	// Aksi durum yok ise footer'i import et
-	if(!isset($_Sayfa[$SA]['footer'])||$_Sayfa[$SA]['footer']){
-		require(__DIR__.'/parca/footer.php');
-	}
+	<?php  
+session_start();
 
-	// Aksi durum yok ise foot'u import et
-	if(!isset($_Sayfa[$SA]['foot'])||$_Sayfa[$SA]['foot']){
-		require(__DIR__.'/parca/foot.php');
-	}
-ob_end_flush(); ?>
+
+
+if (isset($_SESSION['uname'])) {
+	# code...
+header("Location: now.php");
+die();
+
+}
+else
+{
+	echo '
+<div id="cody" class="ayer" id="navbar" style="width: 100%;height: 40%; background-color: transparent; position: fixed; margin-top: 7%; " >
+
+<button id="cody" class="ayer" onclick="login()" style="border-radius:22px; background-color:white; height: 75%;width: 25%;color: black;">LOG IN</button>
+<button id="cody" class="ayer" onclick="register()" style="border-radius:22px;margin-top:3%; height: 75%;width: 25%;color: white; margin-left: auto;">SIGN UP</button>
+</div>';
+}
+?>
+
+
+<div style="text-align: center;  border-width: 2px; border-color: 	white; border-style: 	solid;		 border-radius: 9px; margin-top: 12%; border: 2%; background-color: #3b3b3b; color:pink; 	 position: fixed; width: 30%; z-index: 2;  margin-left:35% ; display: none;"  id="login">
+	<form id="forum"  method = "get" action = "check.php">
+
+   
+   <input style="border-radius: 9px; text-align: center ; font-size: 120%;" type = "text" id = "login" placeholder = "Email Id" name = "uid">
+   <input style="border-radius: 0px; color: white ;text-align: center;" type = "password" id = "password" name = "upass" placeholder = "***">
+   <input style=" margin-top: 7%; border-radius: 4px; margin-left: auto; margin-right: auto;" type = "submit" id = "dologin" value = "Login">
+  
+
+  </form>
+
+</div>
+<div style="text-align: center;  border-width: 2px; border-color: 	white; border-style: 	solid;		 border-radius: 9px; margin-top: 12%; border: 2%; background-color: #3b3b3b; color:pink; 	 position: fixed; width: 30%; z-index: 2;  margin-left:35% ; display: none;"  id="register">
+	<form id="forum"  method = "get" action = "yeni.php">
+
+   
+   <input style="border-radius: 9px; text-align: center ; font-size: 120%;" type = "text" id = "login" placeholder = "Email Id" name = "uid">
+   <input style=" border-radius: 9px; text-align: center ; font-size: 120%;" type = "text" id = "registera" placeholder = "Name" name = "name">
+   <input style="border-radius: 0px; color: white ;text-align: center;" type = "password" id = "password" name = "upass" placeholder = "***">
+   <input style=" margin-top: 7%; border-radius: 4px; margin-left: auto; margin-right: auto;" type = "submit" id = "dologin" value = "Register">
+  
+
+  </form>
+
+</div>
+
+<script type="text/javascript">
+	function login() {
+    var x = document.getElementById("login");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+
+ 
+ document.getElementById("cody").style.filter= "blur(2px)";
+   document.getElementById("coby").style.filter= "blur(2px)";
+ //document.getElementById("cody").style.display="none";
+
+    } else {
+    	document.getElementById("header").style.filter= "blur(0px)";
+        x.style.display = "none";
+    }
+}
+</script>
+<script type="text/javascript">
+	function register() {
+
+	
+    var y = document.getElementById("register");
+    if (y.style.display === "none") {
+        y.style.display = "block";
+
+  document.getElementById("cody").style.filter= "blur(2px)";
+   document.getElementById("coby").style.filter= "blur(2px)";
+ //document.getElementById("header").style.filter= "blur(5px)";
+  //x.style.filter="blur(0px)";
+
+
+    } else {
+    	//document.getElementById("header").style.filter= "blur(0px)";
+        y.style.display = "none";
+    }
+}
+
+</script>
+
+</div>
+
+
+
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+
+</html>
+
