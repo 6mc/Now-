@@ -29,7 +29,9 @@ echo strlen($hello);
  //$_Firma =z(1, ['ad'=>'ayb'], 'ad,telno');
 //$_Firma=z(1,"WHERE 1",'ad');
  //print_r($_Firma);
-$act=$_GET["activity"];
+//$act=$_GET["activity"];
+
+$act=$_POST['query'];
 
  // z(2,'email',$poet);
  //  z(2,'name',$name);
@@ -39,7 +41,7 @@ $dt= $dt->format('d-m-Y H:i:s');
 $kid =$_SESSION["id"];
 
 
-  z(2,Array('Owner_id'=>$kid,'ac_name'=>$act,'datetime' =>$dt,'pic'=>'wow.jpg'));
+  z(2,Array('Owner_id'=>$kid,'ac_name'=>$act['activity'],'datetime' =>$dt,'pic'=>'wow.jpg'));
    header("Location: now.php?result=post");
 die();
 

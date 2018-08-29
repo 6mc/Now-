@@ -8,6 +8,7 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="login_style.css">
 <script type="text/javascript" src="jquery.js"></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="login_effect.js"></script>
 		<link rel="icon"
 		      type="image/ico"
@@ -30,8 +31,14 @@ session_start();
 
 if (isset($_SESSION['uname'])) {
 	# code...
-echo '<a style="margin-top:4%;" href="signout.php">Sign Out</a>';
+//echo '<a style="margin-top:4%;" href="signout.php">Sign Out</a>';
+echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 18%; text-align: center;">
 
+<a style=" padding:5%; border-radius: 4px;background-color: pink;margin-top:4%;" href="signout.php">Sign Out</a>
+
+<a  style="padding:5%; border-radius: 4px; background-color: white;margin-top:4%;" href="./feed/index.php">FEED</a>
+
+</div>';
 }
 else
 {
@@ -130,19 +137,76 @@ else
 </script>
 
 
-<img style="margin-left:80%; margin-top: 2%; " src="adas.png">
+<img style="margin-left:75%; top: 5%; z-index: 5; position: absolute; " src="adas.png">
 				<!-- Header -->
 					<header id="header">
 						<span class="avatar"><img src="https://avatars0.githubusercontent.com/u/9204365?v=3&s=460" alt="" /></span>
 						<h1> <strong>
+
+
+							
 							<?php session_start();
 //require(__DIR__.'/ayar.php');
 //z(6,"firma");
 
+
 echo $_SESSION['name'];
+if ( empty($_GET["id"])) {
+	//echo '</strong></span>
+//<button onclick="post()" style="	color:white; width:15px;  "><</button>';
+	# code...
+}
+else
+{
+echo '<button id="follow" class="flw" onclick="AjaxFunction();" style="color: white; position: absolute; z-index:7;		 margin-left: 	1%;">+Follow</button>';
+}
+
+							 ?>
+						
+<!-- Soyad: <input type="text" id="soyad" name="activity" value=""/>
+<input type="button" id="gonder" value="Gönder" onclick="AjaxFunction();" /> -->
+<script>
+function AjaxFunction() {
+    var activity = {
+       
+        activity: 'merhaba'
+    }
+    $.ajax({
+        type: 'post',
+        url: 'post.php',
+       data: {query: activity},
+        success: function(result) {
+            $('#sonuc').html(result);
+        }
+    });
+ 
+var dumb = getElementById('masonlar');
+dumb.innerHTML="Happy";
+
+}
 
 
-							 ?></strong>  <a href="http://templated.co"></a><br />is<br />
+</script>
+
+
+
+<script >
+
+$('.flw').click(function(){
+		var $this = $(this);
+		$this.toggleClass('flw');
+		if($this.hasClass('flw')){
+			$this.text('+Follow');			
+		} else {
+			$this.text('Unfollow');
+		}
+	});
+
+
+</script>
+
+
+							 </strong>  <a href="http://templated.co"></a><br />is<br />
 
 							<section class="nobrainer">
 
@@ -156,16 +220,27 @@ echo $_SESSION['name'];
 
 
 								<div id="mydiv">
-						 	 <span class="editableDiv"  style=" :focus {outline: 0px solid transparent; } " contenteditable="true"><strong><?php 
+						 	 <span   style=" :focus {outline: 0px solid transparent; } " contenteditable="false"><strong id ="masonlar"><?php 
 require(__DIR__.'/ayar.php');
 
 z(6,"aktivite");
 
 echo z(1,"WHERE Owner_id='".$_SESSION["id"]."'ORDER BY id DESC",'ac_name')[0];
 
- ?>
-</strong></span>
-<button onclick="post()" style="	color:white; width:15px;  "><</button>
+if ( empty($_GET["id"])) {
+	echo '</strong></span><button onclick="post()" style="	color:white; width:15px;  "><</button>';
+	# code...
+}
+else
+{
+//echo '<button style="color: white; position: absolute; z-index:7;		 margin-left: 	1%;">+Follow</button>';
+}
+
+
+
+ 
+
+?>
 
 <script type="text/javascript">
 	
@@ -182,12 +257,14 @@ var u = document.getElementById("wpost");
 }
 
 
+
+
 </script>
 
 
 						</div><button  style="margin-bottom:1%;	color:white; width:5%; display:none;  ">+</button></section> Now.</h1><img src="http://www.musawa.ps/assets/images/location_icon.png" alt=""><p style="color:white">Denizli, Turkey</p>
 						<ul class="icons">
-							<script type="text/javascript">
+							<!-- <script type="text/javascript">
 							document.onclick=check;
 							function check(e){
 							var target = (e && e.target) || (event && event.srcElement);
@@ -211,7 +288,7 @@ var u = document.getElementById("wpost");
 							}
 							return true
 							}
-							</script>
+							</script> -->
 
 
 
@@ -397,6 +474,9 @@ echo '</div>';
 	</body>
 
 <script type="text/javascript">
+
+
+
 $(document).ready(function () { var z = document.getElementById("alert");
     if(window.location.href.indexOf("success") > -1) {
       z.style.display="block";
