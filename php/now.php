@@ -25,8 +25,9 @@
 			<div id="wrapper">
 
 <?php  
-session_start();
 
+session_start();
+require(__DIR__.'/ayar.php');
 
 
 if (isset($_SESSION['uname'])) {
@@ -145,21 +146,61 @@ else
 
 
 							
-							<?php session_start();
+							<?php 
+z(6,"users");
 //require(__DIR__.'/ayar.php');
-//z(6,"firma");
 
-
-echo $_SESSION['name'];
-if ( empty($_GET["id"])) {
-	//echo '</strong></span>
-//<button onclick="post()" style="	color:white; width:15px;  "><</button>';
+if (empty($_GET["id"])) {echo $_SESSION['name'];
 	# code...
 }
 else
 {
-echo '<button id="follow" class="flw" onclick="AjaxFunction();" style="color: white; position: absolute; z-index:7;		 margin-left: 	1%;">+Follow</button>';
+	echo z(1,$_GET["id"],'name');
 }
+
+
+
+ if ( empty($_GET["id"])) {
+	// echo '</strong></span>
+ // <button onclick="post()" style="	color:white; width:15px;  "><</button>';
+ 	# code...
+ }
+ else
+{
+// 	$followed="0";
+
+$followed = "0";
+
+
+$casa=z(1,$_SESSION['id'],"Following");
+ //$casa = "0,24";
+//echo $casa."parola";
+
+$flist=explode(",", $casa);
+//print_r($flist);
+ for ($i=0; $i < count($flist) ; $i++) { 
+// 	# code...
+ if ($_GET["id"]==$flist[$i]) {
+
+ 	$followed= "1";
+ 	
+}
+ }
+
+
+
+if ($followed=="1") {
+
+	echo '<button id="follow" class="flw" onclick="AjaxFunction();" style="color: white; position: absolute; z-index:7;		 margin-left: 	1%;">Unfollow</button>';
+	# code...
+}
+else
+{echo '<button id="follow" class="flw" onclick="AjaxFunction();" style="color: white; position: absolute; z-index:7;		 margin-left: 	1%;">+Follow</button>';
+
+}
+}
+
+//}
 
 							 ?>
 						
@@ -169,11 +210,11 @@ echo '<button id="follow" class="flw" onclick="AjaxFunction();" style="color: wh
 function AjaxFunction() {
     var activity = {
        
-        activity: 'merhaba'
+        activity: window.location.search.split("&")[0].replace("?","").split("=")[1]
     }
     $.ajax({
         type: 'post',
-        url: 'post.php',
+        url: 'follow.php',
        data: {query: activity},
         success: function(result) {
             $('#sonuc').html(result);
@@ -221,11 +262,23 @@ $('.flw').click(function(){
 
 								<div id="mydiv">
 						 	 <span   style=" :focus {outline: 0px solid transparent; } " contenteditable="false"><strong id ="masonlar"><?php 
-require(__DIR__.'/ayar.php');
+// require(__DIR__.'/ayar.php');
 
 z(6,"aktivite");
 
+if (empty($_GET["id"]))
+{
 echo z(1,"WHERE Owner_id='".$_SESSION["id"]."'ORDER BY id DESC",'ac_name')[0];
+
+}
+
+else
+{
+
+	echo z(1,"WHERE Owner_id='".$_GET["id"]."'ORDER BY id DESC",'ac_name')[0];
+}
+
+
 
 if ( empty($_GET["id"])) {
 	echo '</strong></span><button onclick="post()" style="	color:white; width:15px;  "><</button>';
@@ -310,11 +363,24 @@ var u = document.getElementById("wpost");
 
 <?php
 //require(__DIR__.'/ayar.php');
+
+if (empty($_GET["id"])) {
+
+	$whos=$_SESSION["id"];
+	# code...
+}
+else
+{
+	$whos=$_GET["id"];;
+}
+
+
+
 z(6,"aktivite");
 
-$Olds= z(1,"WHERE Owner_id='".$_SESSION["id"]."'ORDER BY id DESC",'ac_name');
+$Olds= z(1,"WHERE Owner_id='".$whos."'ORDER BY id DESC",'ac_name');
 
-$Times= z(1,"WHERE Owner_id='".$_SESSION["id"]."'ORDER BY id DESC",'datetime');
+$Times= z(1,"WHERE Owner_id='".$whos."'ORDER BY id DESC",'datetime');
 
 
 echo '<div>';
