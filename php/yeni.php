@@ -37,7 +37,7 @@ $poem=$_GET["upass"];
  //   z(2,'password',$poem);
 
 
-   z(2,Array('email'=>$poet,'name'=>$name,'password' => $poem));
+   z(2,Array('email'=>$poet,'name'=>$name,'password' => $poem, 'pic'=> 'default.png'));
    header("Location: index.php?result=success");
 die();
 

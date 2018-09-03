@@ -30,15 +30,48 @@ session_start();
 require(__DIR__.'/ayar.php');
 
 
-if (isset($_SESSION['uname'])) {
+if (isset($_SESSION['uname'])) {z(6,"users");
 	# code...
 //echo '<a style="margin-top:4%;" href="signout.php">Sign Out</a>';
-echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 18%; text-align: center;">
+echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 25%; text-align: center;z-index:11; ">
 
 <a style=" padding:5%; border-radius: 4px;background-color: pink;margin-top:4%;" href="signout.php">Sign Out</a>
 
 <a  style="padding:5%; border-radius: 4px; background-color: white;margin-top:4%;" href="./feed/index.php">FEED</a>
+<button class="flc" onclick="openForm()"  style="margin-left: 3%; position:fixed; margin-top: 0%; color: white;" >Change Profile Picture</button>
 
+</head>
+<body>
+
+
+
+
+
+
+<div  style="margin-top:2%; display:none; position:fixed;" class="form-popup" id="myForm">
+  <form enctype="multipart/form-data" action="update.php" method="POST" class="form-container">
+    
+<input   type="file" name="resim" id="resim"  >
+
+<div style="margin-top:2%; ">
+<button style="background-color:transparent;" type="submit" class="btn">Save</button>
+    <button style="background-color:transparent;"  type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+
+</div>
+
+    
+  </form>
+</div>
+
+<script>
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
+</script>
 </div>';
 }
 else
@@ -87,10 +120,20 @@ else
 	<form id="wposta"  method = "get" action = "post.php">
 
    
-    <input style="margin-top: 4%; " class="file-upload__input" id="upload" type="file" name="pic" accept="image/*">
-   <input style="border-radius: 0px; color: white ;text-align: center;" type = "text" id = "act" name = "activity" placeholder = "Current Activity">
-   <input style=" margin-top: 7%; border-radius: 4px; margin-left: auto; margin-right: auto;" type = "submit" id = "dologin" value = "Post">
+    <input id="aty" style="margin-top: 4%; " class="file-upload__input" id="upload" type="file" name="pic" accept="image/*">
+   <input id="aty" style="border-radius: 0px; color: white ;text-align: center;" type = "text" id = "act" name = "activity" placeholder = "Current Activity">
+   <input id="aty" style=" margin-top: 7%; border-radius: 4px; margin-left: auto; margin-right: auto;" type = "submit" id = "dologin" value = "Post">
   
+
+<input style="display: none;" id="edt" style="border-radius: 0px; color: white ;text-align: center;" type = "name" id = "act" name = "activity" placeholder = "Name">
+<input style="display: none;" id="edt" style="border-radius: 0px; color: white ;text-align: center;" type = "name" id = "act" name = "activity" placeholder = "Location">
+<input style="display: none;" id="edt" style="border-radius: 0px; color: white ;text-align: center;" type = "name" id = "act" name = "activity" placeholder = "Password">
+    
+    <input id="edt" style="display: none;" type="submit" value="Upload Image" name="submit">
+
+
+
+
 
   </form>
 
@@ -138,15 +181,67 @@ else
 </script>
 
 
-<img style="margin-left:75%; top: 5%; z-index: 5; position: absolute; " src="adas.png">
+<script type="text/javascript">
+	
+function edit()
+{
+var qq = document.getElementById('wpost');
+var uu = document.getElementById('edt');
+
+uu.style.display='block';
+qq.style.display='qq';
+
+}
+
+
+
+</script>
+<img style="margin-left:65%; top: 5%; z-index: 5; position: absolute; " src="adas.png">
 				<!-- Header -->
-					<header id="header">
-						<span class="avatar"><img src="https://avatars0.githubusercontent.com/u/9204365?v=3&s=460" alt="" /></span>
+					<header  id="header">
+						<span class="avatar"><img src=
+
+
+
+
+<?php 
+
+z(6,'users');
+
+//echo "'images/".z(1,$_SESSION['id'],'pic') ."'";
+
+
+
+if (empty($_GET["id"])) {
+echo "'images/".z(1,$_SESSION['id'],'pic') ."'";
+	# code...
+}
+else
+{
+	echo "'images/".z(1,$_GET["id"],'pic') ."'";
+	//echo z(1,$_GET["id"],'name');
+}
+
+
+ ?>
+
+
+
+
+
+							 alt="" /></span>
 						<h1> <strong>
 
-
 							
+
+
+
+
 							<?php 
+
+
+
+
 z(6,"users");
 //require(__DIR__.'/ayar.php');
 
@@ -245,6 +340,7 @@ $('.flw').click(function(){
 
 
 </script>
+
 
 
 							 </strong>  <a href="http://templated.co"></a><br />is<br />
