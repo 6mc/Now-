@@ -106,6 +106,10 @@ echo "Dosya başarıyla yüklendi.<br>";
 
 
 
+
+
+
+
  // z(2,'email',$poet);
  //  z(2,'name',$name);
  //   z(2,'password',$poem);

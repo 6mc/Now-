@@ -31,7 +31,7 @@ echo strlen($hello);
  //print_r($_Firma);
 //$act=$_GET["activity"];
 
-$act=$_GET["activity"];
+//$act=$_GET["activity"];
 
  // z(2,'email',$poet);
  //  z(2,'name',$name);
@@ -41,7 +41,60 @@ $dt= $dt->format('d-m-Y H:i:s');
 $kid =$_SESSION["id"];
 
 
-  z(2,Array('Owner_id'=>$kid,'ac_name'=>$act,'datetime' =>$dt,'pic'=>'wow.jpg'));
+function generateRandomString($length = 5) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+$dizin = 'photos/';
+
+$foto = generateRandomString(). ".jpg";
+
+$yuklenecek_dosya = $dizin . $foto;
+
+if (file_exists($_FILES['resim']['tmp_name'][0])) {
+	# code...
+
+if (move_uploaded_file($_FILES['resim']['tmp_name'], $yuklenecek_dosya ))
+{
+  //  echo '<img src="tamam.jpg" width="100"><br>';
+echo "Dosya başarıyla yüklendi.<br>";
+ 
+} else {
+    echo "Dosya yüklenemedi!\n";
+}
+
+
+
+
+
+ echo "mb_encode_mimeheader(str)";
+
+
+  z(2,Array('Owner_id'=>$kid,'ac_name'=>$_POST["activity"],'datetime' =>$dt,'pic'=>$foto));
+   }
+
+else
+{
+
+z(2,Array('Owner_id'=>$kid,'ac_name'=>$_POST["activity"],'datetime' =>$dt,'pic'=>'#'));
+
+
+}
+
+
+
+
+//$_POST["name"]
+
+
+
+
    header("Location: now.php?result=post");
 die();
 

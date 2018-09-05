@@ -37,7 +37,7 @@ echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 25%; 
 
 <a style=" padding:5%; border-radius: 4px;background-color: pink;margin-top:4%;" href="signout.php">Sign Out</a>
 
-<a  style="padding:5%; border-radius: 4px; background-color: white;margin-top:4%;" href="./feed/index.php">FEED</a>
+<a  style="padding:5%; border-radius: 4px; background-color: white;margin-top:4%;" href="./feed.php">FEED</a>
 <button class="flc" onclick="openForm()"  style="margin-left: 3%; position:fixed; margin-top: 0%; color: white;" >Change Profile Picture</button>
 
 </head>
@@ -55,12 +55,13 @@ echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 25%; 
 
 <div style="margin-top:2%; ">
 <button style="background-color:transparent;" type="submit" class="btn">Save</button>
-    <button style="background-color:transparent;"  type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+   
 
 </div>
 
     
   </form>
+   <button style="background-color:transparent;"  type="submit" class="btn cancel" onclick="closeForm()">Close</button>
 </div>
 
 <script>
@@ -117,19 +118,14 @@ else
 </div>
 
 <div style="text-align: center;  border-width: 2px; border-color: 	white; border-style: 	solid;		 border-radius: 9px; margin-top: 12%; border: 2%; background-color: #3b3b3b; color:pink; opacity:.9; 	 position: fixed; width: 30%; z-index: 2;  margin-left: 25%; display: none; " class="file-upload" id="wpost">
-	<form id="wposta"  method = "get" action = "post.php">
-
+	<!-- form id="wposta"  method = "POST" action = "post.php"> -->
+<form enctype="multipart/form-data" action="post.php" method="POST" class="form-container">
    
-    <input id="aty" style="margin-top: 4%; " class="file-upload__input" id="upload" type="file" name="pic" accept="image/*">
+    <!-- <input id="aty" style="margin-top: 4%; " class="file-upload__input" id="upload" type="file" name="pic" accept="image/*"> -->
+    <input style="margin-top: 2%; margin-bottom: 2%;"   type="file" name="resim" id="resim"  >
    <input id="aty" style="border-radius: 0px; color: white ;text-align: center;" type = "text" id = "act" name = "activity" placeholder = "Current Activity">
    <input id="aty" style=" margin-top: 7%; border-radius: 4px; margin-left: auto; margin-right: auto;" type = "submit" id = "dologin" value = "Post">
   
-
-<input style="display: none;" id="edt" style="border-radius: 0px; color: white ;text-align: center;" type = "name" id = "act" name = "activity" placeholder = "Name">
-<input style="display: none;" id="edt" style="border-radius: 0px; color: white ;text-align: center;" type = "name" id = "act" name = "activity" placeholder = "Location">
-<input style="display: none;" id="edt" style="border-radius: 0px; color: white ;text-align: center;" type = "name" id = "act" name = "activity" placeholder = "Password">
-    
-    <input id="edt" style="display: none;" type="submit" value="Upload Image" name="submit">
 
 
 
@@ -478,6 +474,9 @@ $Olds= z(1,"WHERE Owner_id='".$whos."'ORDER BY id DESC",'ac_name');
 
 $Times= z(1,"WHERE Owner_id='".$whos."'ORDER BY id DESC",'datetime');
 
+$Pics= z(1,"WHERE Owner_id='".$whos."'ORDER BY id DESC",'pic');
+
+
 
 echo '<div>';
 
@@ -485,7 +484,7 @@ echo '<div>';
 for ($i=0; $i <count($Olds) ; $i++) { 
 	# code...
 if ($i%3==0) {echo '<a href="images/fulls/trip.gif">';
-echo '<img src="#" alt="" />';
+echo '<img src="'.  'photos/' . $Pics[$i] .'" alt="" />';
 echo '<h3>'; echo $Olds[$i];
 	# code...
 
@@ -513,7 +512,7 @@ echo '<div>';
 for ($i=0; $i <count($Olds) ; $i++) { 
 	# code...
 if ($i%3==1) {echo '<a href="images/fulls/trip.gif">';
-echo '<img src="#" alt="" />';
+echo '<img src="'.  'photos/' . $Pics[$i] .'" alt="" />';
 echo '<h3>'; echo $Olds[$i];
 	# code...
 
@@ -539,7 +538,7 @@ echo '<div>';
 for ($i=0; $i <count($Olds) ; $i++) { 
 	# code...
 if ($i%3==2) {echo '<a href="images/fulls/trip.gif">';
-echo '<img src="#" alt="" />';
+echo '<img src="'.  'photos/' . $Pics[$i] .'" alt="" />';
 echo '<h3>'; echo $Olds[$i];
 	# code...
 
