@@ -17,7 +17,31 @@
 <pre>
 
 
-<?php  session_start();
+<?php
+
+function compress($source, $destination, $quality) {
+
+    $info = getimagesize($source);
+
+    if ($info['mime'] == 'image/jpeg') 
+      $image = imagecreatefromjpeg($source);
+
+    elseif ($info['mime'] == 'image/gif') 
+      $image = imagecreatefromgif($source);
+
+    elseif ($info['mime'] == 'image/png') 
+      $image = imagecreatefrompng($source);
+
+    imagejpeg($image, $destination, $quality);
+
+    return $destination;
+  }
+
+
+
+
+
+  session_start();
 //echo "<a href='yeni.php'></a>";
 //echo "Hoş geldin";
 require(__DIR__.'/ayar.php');

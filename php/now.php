@@ -37,9 +37,9 @@ echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 25%; 
 
 <a style=" padding:5%; border-radius: 4px;background-color: pink;margin-top:4%;" href="signout.php">Sign Out</a>
 
-<a  style="padding:5%; border-radius: 4px; background-color: white;margin-top:4%;" href="./feed.php">FEED</a>
-<button class="flc" onclick="openForm()"  style="margin-left: 3%; position:fixed; margin-top: 0%; color: white;" >Change Profile Picture</button>
-
+<a  style="padding:5%; border-radius: 4px; background-color: white;margin-top:0; top:0;" href="./feed.php">FEED</a>
+<button class="flc" onclick="openForm()"  style=" margin-left:.3%; margin-top: 0%; color: white; position:absolute; z-index:16;"  >Edit Profile</button>
+</div>
 </head>
 <body>
 
@@ -447,7 +447,7 @@ var u = document.getElementById("wpost");
 
 					</header>
 				<!-- Main -->
-					<section id="main">
+					<section  style="margin-left: auto;margin-right: auto; background-color: transparent; width: 90%"  id="main" >
 
 						<!-- Thumbnails -->
 							<section class="thumbnails">

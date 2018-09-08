@@ -283,33 +283,54 @@ for ($j=0; $j <count($Posts) ; $j++) {
   array_push($reals, $Posts[$j]);
    # code...
  }
-
-
-
-
-
 }
+
+function bubbleSort(array $arr) {
+    $sorted = false;
+    while (false === $sorted) {
+        $sorted = true;
+        for ($i = 0; $i < count($arr)-1; ++$i) {
+            $current = $arr[$i];
+            $next = $arr[$i+1];
+            if ($next > $current) {
+                $arr[$i] = $next;
+                $arr[$i+1] = $current;
+                $sorted = false;
+            }
+        }
+    }
+    return $arr;
+}
+
+
+
+$finals = bubbleSort($reals);
 
 
 //echo $reals[0][0];
 
 //print_r($reals);
 
-for ($i=0; $i <count($reals) ; $i++) { 
+for ($i=0; $i <count($finals) ; $i++) { 
 
 echo '<div style="margin-top: 4%;" id="player">';
-echo "<div style='  background: linear-gradient(rgba(54, 79, 60, 0.25), rgba(73, 101, 77, 0.55)), url('indir.png')' class='album'>";
+echo '<div style="  background: linear-gradient(rgba(54, 79, 60, 0.25), rgba(73, 101, 77, 0.55)), url("indir.png")" class="album">';
 
 //z(1,$reals[$i],'pic')
 
-echo $reals[$i];
+if (z(1,$finals[$i],'pic')!='#') {echo '<img src="photos/'.  z(1,$finals[$i],'pic')  .'"width="300" height="300" >';
+  # code...
+}
+else
+
+
 echo '<div class="heart"><i class="fas fa-heart"></i></div>';
 echo '</div>';
 echo '<div class="info">';
 echo '';
 echo '<div style="margin-top: 4%;" class="currently-playing">';
-echo '<h2 class="song-name">'.z(1,$reals[$i],'ac_name') .'</h2>';
-$yapan =z(1,$reals[$i],'Owner_id');
+echo '<h2 class="song-name">'.z(1,$finals[$i],'ac_name') .'</h2>';
+$yapan =z(1,$finals[$i],'Owner_id');
 z(6,'users');  
 echo '<h3 class="artist-name">'.z(1,$yapan,'name').'</h3>';
 z(6,'aktivite');

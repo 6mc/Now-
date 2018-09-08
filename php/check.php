@@ -40,7 +40,7 @@ $result =z(1,array('email'=>$poet,'password'=>$poem));
 
 echo $result;
   if ($result==NULL) {
-  	header("Location: now.php?result=failed".$result);
+  	header("Location: index.php?result=failed".$result);
   	# code...
   }
 else
