@@ -214,13 +214,15 @@ session_start();
 if (isset($_SESSION['uname'])) {
   # code...
 //echo '<a style="margin-top:4%;" href="signout.php">Sign Out</a>';
-echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 18%; text-align: center;">
+echo '<div style=" margin-top:4%; border-radius: 4px; color: black; width: 100%; height:20%; text-align: center;">
 
 <a style=" text-decoration:none; color:black; padding:5%; border-radius: 4px;background-color: pink;margin-top:4%;" href="./signout.php">Sign Out</a>
 
 <a  style=" text-decoration:none; color:black; padding:5%; border-radius: 4px; background-color: white;margin-top:4%;" href="./now.php">Profile</a>
-<img style="margin-left:24%; margin-left:250%; " src="./adas.png">
-</div>';
+<a  style=" text-decoration:none; color:  black; padding:5%; border-radius: 4px; background-color:  #87ceeb;margin-top:4%;" href="./browse.php">Browse</a>
+
+</div> <img style="position:fixed;" src="./adas.png"> ' ;
+
 }
 else
 {
@@ -230,7 +232,9 @@ die();
 
 }
 ?>
+
 <div id="namazgah" style="margin-top: 8%;"></div>
+
 
 <?php 
 
@@ -332,7 +336,7 @@ echo '<div style="margin-top: 4%;" class="currently-playing">';
 echo '<h2 class="song-name">'.z(1,$finals[$i],'ac_name') .'</h2>';
 $yapan =z(1,$finals[$i],'Owner_id');
 z(6,'users');  
-echo '<h3 class="artist-name">'.z(1,$yapan,'name').'</h3>';
+echo '<a href="now.php?id='.$yapan.'" class="artist-name">'.z(1,$yapan,'name').'</a>';
 z(6,'aktivite');
 echo '</div>';
 echo '';

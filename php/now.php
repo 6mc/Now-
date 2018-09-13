@@ -120,11 +120,12 @@ else
 <div style="text-align: center;  border-width: 2px; border-color: 	white; border-style: 	solid;		 border-radius: 9px; margin-top: 12%; border: 2%; background-color: #3b3b3b; color:pink; opacity:.9; 	 position: fixed; width: 30%; z-index: 2;  margin-left: 25%; display: none; " class="file-upload" id="wpost">
 	<!-- form id="wposta"  method = "POST" action = "post.php"> -->
 <form enctype="multipart/form-data" action="post.php" method="POST" class="form-container">
-   
+    <p style="margin-top: 2%; margin-bottom: 2%;" >Max size:<strong>2 MB</strong></p>
     <!-- <input id="aty" style="margin-top: 4%; " class="file-upload__input" id="upload" type="file" name="pic" accept="image/*"> -->
-    <input style="margin-top: 2%; margin-bottom: 2%;"   type="file" name="resim" id="resim"  >
+    <input style="margin-bottom: 2%;"  type="file" name="resim" id="resim"  >
    <input id="aty" style="border-radius: 0px; color: white ;text-align: center;" type = "text" id = "act" name = "activity" placeholder = "Current Activity">
    <input id="aty" style=" margin-top: 7%; border-radius: 4px; margin-left: auto; margin-right: auto;" type = "submit" id = "dologin" value = "Post">
+
   
 
 
@@ -483,7 +484,7 @@ echo '<div>';
 
 for ($i=0; $i <count($Olds) ; $i++) { 
 	# code...
-if ($i%3==0) {echo '<a href="images/fulls/trip.gif">';
+if ($i%3==0) {echo '<a href="photos/'.$Pics[$i].'">';
 echo '<img src="'.  'photos/' . $Pics[$i] .'" alt="" />';
 echo '<h3>'; echo $Olds[$i];
 	# code...

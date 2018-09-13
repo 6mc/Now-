@@ -34,8 +34,12 @@
     <div class="person-list">
       <div class="person" v-for="(person,index) in persons" @click="selectPerson(index,$event)"><img class="person-img" :src="person.photo">
         <div class="person-details">
-          <h2 class="person-title">{{person.name}}</h2>
-          <p class="person-desc">{{person.title}}</p>
+          <a style="color: white; font-size: 144%;" href="selectedPersonData.social.linkedin" target="_blank" class="ion-circle"></a>
+          <a  style="text-decoration: none;" :href="person.url" class="person-title">{{person.name}}</a>
+           
+
+
+
         </div>
       </div>
     </div>
@@ -49,12 +53,12 @@
       <div class="team-detail-right">
         <div class="team-detail-bio">
           <div class="team-detail-header">
-            <h2 class="person-title">{{selectedPersonData.name}}</h2>
-            <p class="person-desc">{{selectedPersonData.title}}</p>
+            <a :href="selectedPersonData.url" class="person-title">{{selectedPersonData.name}}</a>
+            <a :href="selectedPersonData.url" class="person-desc">{{selectedPersonData.title}}</a>
             <div class="social">
               <a :href="selectedPersonData.social.facebook" target="_blank" class="ion-social-facebook"></a>
               <a :href="selectedPersonData.social.twitter" target="_blank" class="ion-social-twitter"></a>
-              <a href="selectedPersonData.social.linkedin" target="_blank" class="ion-social-linkedin"></a>
+              <a href="selectedPersonData.social.linkedin" target="_blank" class="ion-person-add"></a>
             </div>
           </div>
           <div class="team-detail-bio-content" v-html="selectedPersonData.bio">
@@ -70,6 +74,9 @@
 
   
  <script  >
+ 
+   
+
 const persons = [
 
 <?php 
@@ -78,7 +85,7 @@ z(6,'users');
 
 $server = z(1,"WHERE 1",'name');
 $gazi = z(1,"WHERE 1",'pic');
-
+$kimlikler = z(1,"WHERE 1",'id');
   
 for ($i=0; $i <count($server) ; $i++) { 
   # code...
@@ -86,7 +93,8 @@ for ($i=0; $i <count($server) ; $i++) {
 echo '{';
 echo 'name: "'. $server[$i].'",';
 echo 'photo: "images/'. $gazi[$i].'",';
-echo 'title: "Developer",';
+echo 'title:"USER", ';
+echo 'url:"now.php?id='.$kimlikler[$i].'",';
 echo 'bio:';
 echo '"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet architecto ea blanditiis quo labore esse magnam illum ut quibusdam. Corrupti ratione iure aliquam adipisci! Harum vitae laboriosam temporibus illo suscipit?</p><p>Saepe repudiandae rerum quam ut perferendis, ullam similique nemo quod, assumenda mollitia consectetur. Eveniet optio maxime perferendis odit possimus? Facilis architecto nesciunt doloribus consectetur culpa veritatis accusamus expedita quos voluptate!</p><p>Nisi provident minus possimus optio voluptate rem, perspiciatis, placeat, culpa aperiam quod temporibus.</p>",';
 echo 'social: {';
@@ -107,7 +115,7 @@ echo '},';
  {
     name: "Carl Roland",
     photo: "https://serving.photos.photobox.com/2226093445b640ea69b3247d4e4a31ee16d7569a38f898affce33adc8fc8d0f3ecf79591.jpg",
-    title: "Developer",
+    title: "UI/UX Designer",
     bio:
       "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet architecto ea blanditiis quo labore esse magnam illum ut quibusdam. Corrupti ratione iure aliquam adipisci! Harum vitae laboriosam temporibus illo suscipit?</p><p>Saepe repudiandae rerum quam ut perferendis, ullam similique nemo quod, assumenda mollitia consectetur. Eveniet optio maxime perferendis odit possimus? Facilis architecto nesciunt doloribus consectetur culpa veritatis accusamus expedita quos voluptate!</p><p>Nisi provident minus possimus optio voluptate rem, perspiciatis, placeat, culpa aperiam quod temporibus.</p>",
     social: {

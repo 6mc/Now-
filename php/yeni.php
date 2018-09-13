@@ -5,12 +5,7 @@
 </head>
 <body>
 	<a href="#">salaav</a>
-<script type="text/javascript">
-	
-	var val=getElementsById('');
 
-
-</script>
 </body>
 </html>
 
@@ -37,7 +32,7 @@ $poem=$_GET["upass"];
  //   z(2,'password',$poem);
 
 
-   z(2,,Array('email'=>$poet,'name'=>$name,'password' => $poem, 'pic'=> 'default.png', 'Location' => 'Planet Earth'));
+   z(2,Array('email'=>$poet,'name'=>$name,'password' => $poem, 'pic'=> 'default.png', 'Location' => 'Planet Earth'));
    header("Location: index.php?result=success");
 die();
 
