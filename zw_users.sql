@@ -38,7 +38,6 @@ CREATE TABLE `zw_users` (
 --
 
 INSERT INTO `zw_users` (`id`, `email`, `name`, `password`) VALUES
-(1, 'bmcan33@gmail.com', 'Mehmet Can', 'maraton1'),
 (5, 'bmcan33@gmail.com', 'candysandyification .', 'mehmet20'),
 (6, 'mcanmutaf@outlook.com', 'mcanwoo', 'mehmet33');
 
